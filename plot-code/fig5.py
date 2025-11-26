@@ -27,11 +27,10 @@ def first_front_only(values1, values2):
 
 
 csv_files = [
-    "data/seed01.csv",
-    "Random_mutation_data/results.csv"
+    "./data/seed01.csv",
+    "./data/random_mutation_data/results.csv"
 ]
 
-# seabornパレットを使用
 palette = sns.color_palette([
     '#E69F00', '#56B4E9', '#009E73',
     '#0072B2', '#D55E00',
@@ -58,9 +57,9 @@ for col, path in zip(palette, csv_files):
 
     base = os.path.basename(path)
     if "results" in base:
-        label = "Random_mutation"
+        label = "Random mutation"
     elif "seed01" in base:
-        label = "Our_method"
+        label = "Proposed method"
     else:
         label = "Unknown"
     plt.plot(
@@ -75,7 +74,7 @@ plt.ylabel(r'$\mathrm{f}_{\text{recovery}}$')
 plt.tick_params(labelsize=15)
 plt.legend(fontsize=15)
 plt.tight_layout()
-plt.savefig('fig5.png', dpi=400)
+# plt.savefig('fig5.png', dpi=400)
 plt.show()
 
 for label, area in hypervolume:

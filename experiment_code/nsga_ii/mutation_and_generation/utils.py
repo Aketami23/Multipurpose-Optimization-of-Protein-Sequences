@@ -74,7 +74,6 @@ def generate_offspring_npmm(solution: list, count: int, config_path: str) -> lis
 def generate_random_sequence_list(seq_length: int, num_sequences: int) -> list[tuple[str, str, None]]:
     result = []
     for i in range(1, num_sequences + 1):
-        ## ハードコーディング
         seq_id = f"round_{i}"
         sequence = ''.join(random.choices(amino_acids, k=seq_length))
         result.append((seq_id, sequence, None))

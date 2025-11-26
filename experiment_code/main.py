@@ -18,7 +18,6 @@ import shutil
 import pickle
 import gzip
 
-## 追加したimport
 import csv
 import subprocess
 import re
@@ -81,7 +80,6 @@ import glob
 import jax
 import jax.numpy as jnp
 
-### ここから下は私が追加した関数
 from evaluation_functions.plddt.utils import calculate_plddt
 from evaluation_functions.tmscore.utils import calculate_tmscore, calculate_default_tmscore
 from evaluation_functions.recovery.utils import calculate_recovery
@@ -1280,7 +1278,6 @@ def put_mmciffiles_into_resultdir(
 
 
 def get_new_result_files(output_dir: str, name: str) -> Tuple[Optional[str], Optional[str]]:
-    # ハードコーディング
     search_pdb = f"{output_dir}/{name}_unrelaxed_rank_001*"
     matching_pdb = glob.glob(search_pdb)
     search_json = f"{output_dir}/{name}_scores_rank_001_alphafold2_ptm_model_1*"
@@ -1290,9 +1287,6 @@ def get_new_result_files(output_dir: str, name: str) -> Tuple[Optional[str], Opt
     else:
         logger.warning(f"No matching files found for {search_pdb} or {search_json}")
         return None
-
-### この上までが私が追加した関数
-
 
 def run(
     queries: List[Tuple[str, Union[str, List[str]], Optional[List[str]]]],
@@ -1521,7 +1515,6 @@ def run(
         solution2 = []
         solution2_ids = []
 
-        # NSFGA-IIでの子集団の生成
         if not first_gen:
             function1_values = get_column_values(output_csv, solution, "negative_tm_score")
             function2_values = get_column_values(output_csv, solution, "recovery")
@@ -1795,7 +1788,6 @@ def run(
                 new_result_pdb, new_result_json = get_new_result_files(result_dir, raw_jobname)
                 count += 1
 
-                ## 以下で評価する
                 negative_plddt_score = calculate_plddt(new_result_json)
                 negative_tm_score = calculate_tmscore(purpose_pdb, new_result_pdb, config_path)
                 recovery_score = calculate_recovery(query_sequence, config_path)
@@ -1823,7 +1815,7 @@ def run(
                 if num_models > 0:
                     is_done_marker.touch()
         
-        # NSFGA-IIでの親集団選択
+        # selection for next generation
         if not first_gen:
             function1_values2 = get_column_values(output_csv, solution2, "negative_tm_score")
             function2_values2 = get_column_values(output_csv, solution2, "recovery")
@@ -1884,7 +1876,6 @@ def main():
 
     parser.add_argument("results", help="Output directory of results.")
 
-    # 追加した部分
     parser.add_argument(
         "output_csv",
         type=str,
@@ -1896,7 +1887,6 @@ def main():
         type=str,
         help="Path to the YAML config file.",
     )
-    # ここまで
 
     msa_group = parser.add_argument_group("MSA arguments", "")
 
@@ -2263,7 +2253,6 @@ def main():
     # added for actifptm calculation
     use_probs_extra = False if args.no_use_probs_extra else True
 
-    ## 私が追加した部分
     _config_path = args.config_path
     from config_utils import load_config
     _config = load_config(_config_path)
@@ -2271,7 +2260,6 @@ def main():
     _generation = _config["experiment_config"]["generation"]
     population_size = _config["experiment_config"]["population"]
     seq_length = _config["known_sequence"]["length"]
-    ## ここまで
 
     user_agent = f"colabfold/{version}"
     run(
@@ -2319,14 +2307,12 @@ def main():
         save_recycles=args.save_recycles,
         calc_extra_ptm=args.calc_extra_ptm,
         use_probs_extra=use_probs_extra,
-        ## 追加した部分
         purpose_pdb=purpose_pdb_path,
         output_csv=args.output_csv,
         generation=_generation,
         population=population_size,
         sequence_length=seq_length,
         config_path=_config_path
-        ## ここまで
 
     )
 

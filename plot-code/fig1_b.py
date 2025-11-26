@@ -27,15 +27,14 @@ def first_front_only(values1, values2):
 
 
 csv_files = [
-    "output_mpnn_03.csv",
-    "output_mpnn_07.csv",
-    "output_mpnn_10.csv",
-    "output_mpnn_20.csv",
-    "output_mpnn_30.csv",
-    "data/seed01.csv"
+    "./data/pMPNN_data/output_mpnn_03.csv",
+    "./data/pMPNN_data/output_mpnn_07.csv",
+    "./data/pMPNN_data/output_mpnn_10.csv",
+    "./data/pMPNN_data/output_mpnn_20.csv",
+    "./data/pMPNN_data/output_mpnn_30.csv",
+    "./data/seed01.csv"
 ]
 
-# seabornパレットを使用
 palette = sns.color_palette([
     '#E69F00', '#56B4E9', '#009E73',
     '#0072B2', '#D55E00',
@@ -72,7 +71,7 @@ for col, path in zip(palette, csv_files):
     elif base.startswith("output_mpnn_30"):
         label = "ProtienMPNN (temp3.0)"
     elif "seed01" in base:
-        label = "Our_method(03)"
+        label = "Proposed method (temp0.3)"
     else:
         label = "Unknown"
     plt.plot(

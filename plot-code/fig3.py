@@ -51,10 +51,6 @@ def fast_non_dominated_sort(values1, values2):
     del front[len(front)-1]
     return front
 
-# csv_files = natsorted(glob.glob('./data/*.csv'))
-
-# results_3.csvとdata/seed01.csvをプロットする
-
 csv_files = natsorted(glob.glob('./results_3.csv') + glob.glob('./data/seed01.csv'))
 
 if not csv_files:
@@ -101,14 +97,6 @@ for col, path in zip(colors, csv_files):
 plt.xlabel(r'$\mathrm{f}_{\text{structure}}$')
 plt.ylabel(r'$\mathrm{f}_{\text{recovery}}$')
 plt.tick_params(labelsize=15)
-
-"""
-plt.legend(bbox_to_anchor=(1, 1), 
-           loc='upper right',
-           fontsize=15, 
-           borderaxespad=1)
-"""
-
 plt.tight_layout()
 # plt.savefig("./plot/fig3.png", format="png", dpi=300)
 plt.show()

@@ -7,8 +7,8 @@ import scienceplots  # noqa: F401
 plt.style.use(['science', 'nature'])
 plt.rcParams["font.size"] = 10
 
-# our_method
-csv_files = sorted(glob.glob('data/*.csv'))
+# Proposed method
+csv_files = sorted(glob.glob('./data/*.csv'))
 if not csv_files:
     raise RuntimeError("No CSV files found")
 
@@ -24,17 +24,18 @@ for path in csv_files:
     df = df[df[tm_col] <= -0.90]
     df = df[df[plddt_col] <= -90]
     
-    ours_min_wtr.extend(df[wt_col].tolist())
+    min_idx = df[wt_col].idxmin()
+    ours_min_wtr.append(df.loc[min_idx, wt_col])
 
-df_all = [pd.DataFrame({"Method": "Ours (temp=0.3)", "Recovery_score": ours_min_wtr})]
+df_all = [pd.DataFrame({"Method": "Proposed method (temp0.3)", "Recovery_score": ours_min_wtr})]
 
 # ProteinMPNN variants
 for temp, label in [
-    ("03", "ProteinMPNN (temp=0.3)"),
-    ("07", "ProteinMPNN (temp=0.7)"),
-    ("10", "ProteinMPNN (temp=1.0)"),
-]:
-    files = sorted(glob.glob(f'./output_mpnn_{temp}.csv'))
+    ("03", "ProteinMPNN (temp0.3)"),
+    ("07", "ProteinMPNN (temp0.7)"),
+    ("10", "ProteinMPNN (temp1.0)"),]:
+
+    files = sorted(glob.glob(f'./data/pMPNN_data/output_mpnn_{temp}.csv'))
     pmpnn_wtr = []
     for path in files:
         df = pd.read_csv(path)
@@ -54,10 +55,10 @@ for temp, label in [
 df = pd.concat(df_all)
 
 method_order = [
-    "Ours (temp=0.3)",
-    "ProteinMPNN (temp=0.3)",
-    "ProteinMPNN (temp=0.7)",
-    "ProteinMPNN (temp=1.0)",
+    "Proposed method (temp0.3)",
+    "ProteinMPNN (temp0.3)",
+    "ProteinMPNN (temp0.7)",
+    "ProteinMPNN (temp1.0)",
 ]
 colors = ["#56B4E9", "#009E73", "#E69F00", "#CC79A7"]
 palette = dict(zip(method_order, colors))
@@ -76,5 +77,5 @@ sns.violinplot(
 plt.xlabel("")
 plt.ylabel(r"$\mathrm{f}_{\text{recovery}}$", fontsize=12)
 plt.tight_layout()
-plt.savefig("./plot/fig1_all_multi.png", dpi=400)
+# plt.savefig("./fig1_a.png", dpi=400)
 plt.show()

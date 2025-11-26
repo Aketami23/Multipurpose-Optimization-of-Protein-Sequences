@@ -104,12 +104,12 @@ def plot_scatter_modified(embedding, grouping_path):
 
         marker_style = (
             ',' if group == 'Ref_sequence'
-            else 'x' if group in ['ProteinMPNN (temp=0.3)', 'ProteinMPNN (temp=0.7)', 'ProteinMPNN (temp=1.0)']
+            else 'x' if group in ['ProteinMPNN (temp0.3)', 'ProteinMPNN (temp0.7)', 'ProteinMPNN (temp1.0)']
             else 'o'
         )
 
         point_size = (50 if group == 'Ref_sequence'
-                      else 10 if group in ['ProteinMPNN (temp=0.3)', 'ProteinMPNN (temp=0.7)', 'ProteinMPNN (temp=1.0)']
+                      else 10 if group in ['ProteinMPNN (temp0.3)', 'ProteinMPNN (temp0.7)', 'ProteinMPNN (temp1.0)']
                       else 5)
 
         plt.scatter(
@@ -124,16 +124,16 @@ def plot_scatter_modified(embedding, grouping_path):
     plt.xticks([])
     plt.yticks([])
     plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', fontsize='small')
-    # plt.savefig(".fig2.png", bbox_inches="tight", dpi=400)
+    # plt.savefig("./fig2.png", bbox_inches="tight", dpi=400)
     plt.show()
 
-# our_method 系
+# Proposed method
 csv_files = natsorted(glob.glob('./data/*.csv'))
 runs = [
     ExprimentRun(
-        label=f"Our_method_{i}",
+        label=f"Proposed method {i}",
         csv_path=path,
-        method="our_method",
+        method="Proposed method",
         seed=i
     )
     for i, path in enumerate(csv_files)
@@ -141,10 +141,10 @@ runs = [
 
 # add proteinMPNN
 mpnn_settings = [
-    # ("ProteinMPNN (temp=1.0)", "../output_mpnn_10.csv", "mpnn"),
-    # ("ProteinMPNN (temp=0.7)", "../output_mpnn_07.csv", "mpnn"),
-    # ("ProteinMPNN (temp=0.3)", "../output_mpnn_03.csv", "mpnn"),
-    ("Ref_sequence", "./req_seq.csv", "raw"),
+    # ("ProteinMPNN (temp=1.0)", "./data/pMPNN_data/output_mpnn_10.csv", "mpnn"),
+    # ("ProteinMPNN (temp=0.7)", "./data/pMPNN_data/output_mpnn_07.csv", "mpnn"),
+    # ("ProteinMPNN (temp=0.3)", "./data/pMPNN_data/output_mpnn_03.csv", "mpnn"),
+    ("Ref_sequence", "./data/reference_data/req_seq.csv", "raw"),
 ]
 
 runs.extend(
