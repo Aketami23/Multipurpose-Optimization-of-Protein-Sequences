@@ -40,8 +40,6 @@ palette = sns.color_palette([
 plt.rcParams["font.size"] = 25
 plt.figure(figsize=(9, 6))
 
-hypervolume = []
-
 for col, path in zip(palette, csv_files):
     df = pd.read_csv(path)
     cols = {c.lower(): c for c in df.columns}
@@ -66,8 +64,6 @@ for col, path in zip(palette, csv_files):
         pareto[:, 0], pareto[:, 1], 'o-', ms=4, lw=1.5,
         alpha=0.5, color=col, label=label
     )
-    area = np.trapz(pareto[:, 1], pareto[:, 0])
-    hypervolume.append((label, area))
 
 plt.xlabel(r'$\mathrm{f}_{\text{structure}}$')
 plt.ylabel(r'$\mathrm{f}_{\text{recovery}}$')
@@ -76,6 +72,3 @@ plt.legend(fontsize=15)
 plt.tight_layout()
 # plt.savefig('fig5.png', dpi=400)
 plt.show()
-
-for label, area in hypervolume:
-    print(f"Hypervolume for {label}: {area:.6f}")

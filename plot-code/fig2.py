@@ -197,7 +197,7 @@ DM = SimpleMatchMat(records)
 fullDM = convert_DM_tofull(DM)
 fullDM = pd.DataFrame(fullDM)
 
-np.save("./DM-checkpoint.npy", fullDM.to_numpy(), allow_pickle=True)
+# np.save("./DM-checkpoint.npy", fullDM.to_numpy(), allow_pickle=True)
 
 embeddings = calc_reduction(fullDM)
 
