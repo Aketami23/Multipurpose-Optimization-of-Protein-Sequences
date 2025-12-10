@@ -6,11 +6,11 @@ GHKLLLTLEKGDLKIVIYEEYSSLEDFNVLLSRCGKLVSDLKPPEITLSHWGETPEVVDQLGVKFLQFGHSLGYNNVLLQ
 **Structure predictions:**
 
 * *ColabFold model:* `Example_data/colabfold2_round_5871.pdb`
-Predicted pLDDT: **93.12**
-Predicted TM-score: **0.96**
+pLDDT: **93.12**
+TM-score: **0.96**
 * *AlphaFold3 model:* `Example_data/alphafold3_round_5871.cif`
-Predicted pLDDT: **90.17**
-Predicted TM-score: **0.94**
+pLDDT: **90.17**
+TM-score: **0.94**
 
 **Original sequence:**
 ```
