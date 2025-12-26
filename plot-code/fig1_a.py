@@ -5,7 +5,13 @@ import seaborn as sns
 import scienceplots  # noqa: F401
 
 plt.style.use(['science', 'nature'])
-plt.rcParams["font.size"] = 10
+plt.rcParams.update({
+    "font.size": 14,          # 基本
+    "axes.labelsize": 18,     # x,yラベル
+    "xtick.labelsize": 11,    # x軸カテゴリ
+    "ytick.labelsize": 14,    # y軸目盛
+})
+
 
 # Proposed method
 csv_files = sorted(glob.glob('./data/*.csv'))
@@ -27,13 +33,13 @@ for path in csv_files:
     min_idx = df[wt_col].idxmin()
     ours_min_wtr.append(df.loc[min_idx, wt_col])
 
-df_all = [pd.DataFrame({"Method": "Proposed method (temp0.3)", "Recovery_score": ours_min_wtr})]
+df_all = [pd.DataFrame({"Method": "Proposed method (temp=0.3)", "Recovery_score": ours_min_wtr})]
 
 # ProteinMPNN variants
 for temp, label in [
-    ("03", "ProteinMPNN (temp0.3)"),
-    ("07", "ProteinMPNN (temp0.7)"),
-    ("10", "ProteinMPNN (temp1.0)"),]:
+    ("03", "ProteinMPNN (temp=0.3)"),
+    ("07", "ProteinMPNN (temp=0.7)"),
+    ("10", "ProteinMPNN (temp=1.0)"),]:
 
     files = sorted(glob.glob(f'./data/pMPNN_data/output_mpnn_{temp}.csv'))
     pmpnn_wtr = []
@@ -55,15 +61,15 @@ for temp, label in [
 df = pd.concat(df_all)
 
 method_order = [
-    "Proposed method (temp0.3)",
-    "ProteinMPNN (temp0.3)",
-    "ProteinMPNN (temp0.7)",
-    "ProteinMPNN (temp1.0)",
+    "Proposed method (temp=0.3)",
+    "ProteinMPNN (temp=0.3)",
+    "ProteinMPNN (temp=0.7)",
+    "ProteinMPNN (temp=1.0)",
 ]
 colors = ["#56B4E9", "#009E73", "#E69F00", "#CC79A7"]
 palette = dict(zip(method_order, colors))
 
-plt.figure(figsize=(5.5, 3))
+plt.figure(figsize=(8.5, 6.5))
 
 sns.violinplot(
     data=df,
@@ -75,7 +81,7 @@ sns.violinplot(
 )
 
 plt.xlabel("")
-plt.ylabel(r"$\mathrm{f}_{\text{recovery}}$", fontsize=12)
+plt.ylabel(r"$\mathrm{f}_{\text{recovery}}$", fontsize=24)
 plt.tight_layout()
-# plt.savefig("./fig1_a.png", dpi=400)
+plt.savefig("./plot/fig1_a.png", dpi=600)
 plt.show()
