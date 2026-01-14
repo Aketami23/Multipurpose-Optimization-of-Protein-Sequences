@@ -61,17 +61,17 @@ for col, path in zip(palette, csv_files):
 
     base = os.path.basename(path)
     if base.startswith("output_mpnn_03"):
-        label = "ProtienMPNN (temp0.3)"
+        label = "ProteinMPNN (temp=0.3)"
     elif base.startswith("output_mpnn_07"):
-        label = "ProtienMPNN (temp0.7)"
+        label = "ProteinMPNN (temp=0.7)"
     elif base.startswith("output_mpnn_10"):
-        label = "ProtienMPNN (temp1.0)"
+        label = "ProteinMPNN (temp=1.0)"
     elif base.startswith("output_mpnn_20"):
-        label = "ProtienMPNN (temp2.0)"
+        label = "ProteinMPNN (temp=2.0)"
     elif base.startswith("output_mpnn_30"):
-        label = "ProtienMPNN (temp3.0)"
+        label = "ProteinMPNN (temp=3.0)"
     elif "seed01" in base:
-        label = "Proposed method (temp0.3)"
+        label = "Proposed method (temp=0.3)"
     else:
         label = "Unknown"
     plt.plot(
@@ -86,7 +86,7 @@ plt.ylabel(r'$\mathrm{f}_{\text{recovery}}$')
 plt.tick_params(labelsize=15)
 plt.legend(fontsize=15)
 plt.tight_layout()
-# plt.savefig('fig1_b.png', dpi=400)
+plt.savefig('plot/fig1_b.png', dpi=400)
 plt.show()
 
 for label, area in hypervolume:
