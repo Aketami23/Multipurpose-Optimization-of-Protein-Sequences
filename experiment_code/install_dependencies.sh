@@ -5,7 +5,7 @@ if [ -d ".venv" ]; then
   source .venv/bin/activate
 fi
 
-uv python pin 3.10.16
+uv python pin 3.10.9
 
 uv add Cython setuptools numpy
 
