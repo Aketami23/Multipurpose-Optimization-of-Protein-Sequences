@@ -120,6 +120,6 @@ python plot-code/fig4.py
 ## expriment_code/main.py
 for setting up environment variables and paths
 ```bash
-chmod +x experiment_code/setup.sh
-. experiment_code/setup.sh
+chmod +x setup.sh
+. setup.sh
 ```

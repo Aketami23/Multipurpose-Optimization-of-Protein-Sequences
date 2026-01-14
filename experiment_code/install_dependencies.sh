@@ -45,7 +45,7 @@ export PATH="${SWIG_PREFIX}/bin:$PATH"
 # )
 
 cmake .. -DCMAKE_INSTALL_PREFIX="${HOME}/apps/openmm/8.1.1" -DPYTHON_EXECUTABLE="/path/to/your/.venv/bin/python3.10.16"
-make -j8 instal
+make -j8 install
 
 uv add numpy==1.26.4
 
