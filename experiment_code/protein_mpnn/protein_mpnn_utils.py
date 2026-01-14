@@ -136,6 +136,7 @@ def parse_PDB_biounits(x, atoms=['N','CA','C'], chain=None):
   except TypeError:
       return 'no_chain', 'no_chain'
 
+
 def parse_PDB(path_to_pdb, input_chain_list=None, ca_only=False):
     c=0
     pdb_dict_list = []
@@ -185,7 +186,6 @@ def parse_PDB(path_to_pdb, input_chain_list=None, ca_only=False):
             pdb_dict_list.append(my_dict)
             c+=1
     return pdb_dict_list
-
 
 
 def tied_featurize(batch, device, chain_dict, fixed_position_dict=None, omit_AA_dict=None, tied_positions_dict=None, pssm_dict=None, bias_by_res_dict=None, ca_only=False):
@@ -458,6 +458,7 @@ def loss_smoothed(S, log_probs, mask, weight=0.1):
     loss = -(S_onehot * log_probs).sum(-1)
     loss_av = torch.sum(loss * mask) / torch.sum(mask)
     return loss, loss_av
+
 
 class StructureDataset():
     def __init__(self, jsonl_file, verbose=True, truncate=None, max_length=100,

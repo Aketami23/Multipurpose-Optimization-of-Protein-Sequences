@@ -2,8 +2,7 @@ import torch
 import random
 import numpy as np
 import copy
-from .protein_mpnn_utils import ProteinMPNN
-from .protein_mpnn_utils import _scores, _S_to_seq, tied_featurize
+from .protein_mpnn_utils import ProteinMPNN, _scores, _S_to_seq, tied_featurize, parse_PDB
 from config_utils import load_config
 
 def initialize_model(config_path: str, seed: int, device: any = None)-> tuple[any, any]:
@@ -65,10 +64,9 @@ def run_inference(config_path: str,
     tied_positions_dict = None
     bias_by_res_dict = None
     bias_AAs_np = np.zeros(len(alphabet))
-    # wild_type = "DIQVQVNIDDNGKNFDYTYTVTTESELQKVLNELMDYIKKQGAKRVRISITARTKKEAEKFAAILIKVFAELGYNDINVTFDGDTVTVEGQL"
-    # known_seq = _config["known_sequence"]["sequence"]
+    pdb_data = parse_PDB(_config["target_structure"]["pdb_path"])
     protein = {'seq_chain_A': init_seq, 
-               'coords_chain_A': _config["target_structure"]["formated_coordinate"], 
+               'coords_chain_A': pdb_data[0]['coords_chain_A'],
                'name': '1qys', 
                'num_of_chains': 1, 
                'seq': init_seq}
