@@ -35,19 +35,20 @@ This repository contains code for running experiments and generating visualizati
 │       ├── ...
 │       └── fig4_seed24.png
 │
-├── data/                   # Data generated or used in experiments
-│   ├── seed01.csv
-│   ├── ...
-│   └── seed24.csv
-│
-├── SSNplot/                # Sequence Similarity Network resourcesg
-│   ├── pySSN_wrapper.py
-│   ├── pareto_sequences-Levenshtein-tSNE.png (fig2)
-│   ├── pareto_sequences.fasta
-│   └── seq_groupnames.txt
-│
-└── pMPNNdata/              # ProteinMPNN data
-    └── proteinMPNN03.csv
+└── data/                   # Data generated or used in experiments
+    ├── pMPNN_data
+    │   ├── output_mpnn_03.csv
+    │   ├── output_mpnn_07.csv
+    │   ├── output_mpnn_10.csv
+    │   ├── output_mpnn_20.csv
+    │   └── output_mpnn_30.csv
+    ├── random_mutation_data
+    │   └── results.csv
+    ├── reference_data
+    │   └── req_seq.csv
+    ├── seed01.csv
+    ├── ...
+    └── seed24.csv
 ```
 
 ---
