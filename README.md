@@ -59,24 +59,21 @@ This repository is the official implementation of the paper:
 
 ## 🚀 Running Experiments
 
-To run the experiments:
-
-```shell
-cd experiment_code
-bash script.sh
-```
-
-Or manually via:
-
-```shell
-python main.py
-```
-
-Dependencies are listed in:
+To set up the environment and synchronize dependencies:
 
 ```shell
 cd experiment_code
 uv sync
+```
+
+Make sure to install [USalign](https://github.com/pylelab/USalign) and specify its path in `config.yaml`.
+Download the [ProteinMPNN](https://github.com/dauparas/ProteinMPNN?tab=readme-ov-file) model weights and set their path in `config.yaml`.
+
+To run the experiments, execute:
+
+```shell
+cd experiment_code
+bash script.sh
 ```
 
 ---
