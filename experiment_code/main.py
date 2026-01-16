@@ -2225,7 +2225,6 @@ def main():
     INPUT = "./data/dummy.fasta"
 
     queries, is_complex = get_queries(INPUT, args.sort_queries_by)
-    print(f"args.input:{args.input}")
     model_type = set_model_type(is_complex, args.model_type)
 
     if args.msa_only:
