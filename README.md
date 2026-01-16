@@ -79,7 +79,7 @@ experiment_code/requirements.txt
 
 ### Fig 1
 
-![fig1](plot/fig1.png)
+![fig1](plot/fig1_a.png)
 
 ```bash
 python plot-code/fig1.py
@@ -89,7 +89,7 @@ python plot-code/fig1.py
 
 ### Fig 2: Sequence Similarity Network (SSN)
 
-![fig2](SSNplot/pareto_sequences-Levenshtein-tSNE.png)
+![fig2](plot/fig2.png)
 
 ```bash
 python plot-code/SSN.py
