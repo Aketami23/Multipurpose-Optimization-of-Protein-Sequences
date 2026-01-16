@@ -2227,7 +2227,9 @@ def main():
 
     data_dir = Path(args.data or default_data_dir)
 
-    queries, is_complex = get_queries(args.input, args.sort_queries_by)
+    INPUT = "./data/dummy.fasta"
+
+    queries, is_complex = get_queries(INPUT, args.sort_queries_by)
     print(f"args.input:{args.input}")
     model_type = set_model_type(is_complex, args.model_type)
 

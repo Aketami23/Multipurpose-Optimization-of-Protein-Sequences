@@ -6,3 +6,5 @@ plot-code/fig_every5.py
 .DS_Store
 *.npy
 *.ipynb
+experiment_code/config_local.yaml
+plot-code/metrics.ipynb
