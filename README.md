@@ -67,7 +67,8 @@ uv sync
 ```
 
 Make sure to install [USalign](https://github.com/pylelab/USalign) and specify its path in `config.yaml`.
-Download the [ProteinMPNN](https://github.com/dauparas/ProteinMPNN?tab=readme-ov-file) model weights and set their path in `config.yaml`.
+Download the [ProteinMPNN](https://github.com/dauparas/ProteinMPNN?tab=readme-ov-file) model weights and set their path in `config.yaml`. The experiment uses `v_48_020.pt` .
+
 
 To run the experiments, execute:
 

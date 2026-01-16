@@ -1869,11 +1869,6 @@ def set_model_type(is_complex: bool, model_type: str) -> str:
 def main():
     parser = ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
 
-    parser.add_argument(
-        "input",
-        help="One of FASTA file",
-    )
-
     parser.add_argument("results", help="Output directory of results.")
 
     parser.add_argument(
