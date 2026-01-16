@@ -1,6 +1,11 @@
 # Experiment and Plotting Codebase
 
-This repository contains code for running experiments and generating visualizations for protein sequence optimization using NSGA-II and ProteinMPNN.
+[![DOI:10.1080/27660400.2025.2611575](https://img.shields.io/badge/DOI-10.1080/27660400.2025.2611575-blue.svg)](https://doi.org/10.1080/27660400.2025.2611575)
+
+This repository is the official implementation of the paper:
+> **Multi-objective optimization for designing structurally similar proteins with dissimilar sequences** > Ryunosuke Akiba, Yoshitaka Moriwaki, Ryuichiro Ishitani & Narutoshi Yoshikawa  
+> *Science and Technology of Advanced Materials: Methods*, 2025.  
+> [Read the paper here](https://doi.org/10.1080/27660400.2025.2611575)
 
 ---
 
@@ -22,15 +27,14 @@ This repository contains code for running experiments and generating visualizati
 │
 ├── plot-code/              # Plot generation scripts
 │   ├── fig1.py
-│   ├── fig2.py             # Sequence Similarity Network plot
-│   ├── fig3.py
-│   └── fig4.py  
+│   ├── ...
+│   └── fig7.py  
 │
 ├── plot/                   # Generated plots
 │   ├── fig1.png
 │   ├── fig3.png
 │   ├── fig4_seed24.png
-│   └── fig4/               # Per-seed visualizations
+│   └── fig7/               
 │       ├── fig4_seed01.png
 │       ├── ...
 │       └── fig4_seed24.png
@@ -57,70 +61,90 @@ This repository contains code for running experiments and generating visualizati
 
 To run the experiments:
 
-```bash
+```shell
 cd experiment_code
 bash script.sh
 ```
 
 Or manually via:
 
-```bash
+```shell
 python main.py
 ```
 
 Dependencies are listed in:
 
-```text
-experiment_code/requirements.txt
+```shell
+cd experiment_code
+uv sync
 ```
 
 ---
 
 ## 📊 Plotting Figures
 
-### Fig 1
-
-![fig1](plot/fig1_a.png)
-
-```bash
-python plot-code/fig1.py
-```
-
----
-
-### Fig 2: Sequence Similarity Network (SSN)
+### Figure 2
 
 ![fig2](plot/fig2.png)
 
-```bash
-python plot-code/SSN.py
+```shell
+python plot-code/fig2.py
 ```
 
 ---
 
-### Fig 3
+### Figure 3
 
 ![fig3](plot/fig3.png)
 
-```bash
+```shell
 python plot-code/fig3.py
 ```
 
 ---
 
-### Fig 4 (Seed 24 example)
+### Figure 4
 
-![fig4](plot/fig4_seed24.png)
+![fig4](plot/fig4.png)
 
-```bash
+```shell
 python plot-code/fig4.py
 ```
 
-> Plots for all seeds are saved in `plot/fig4/`.
+### Figure 5
 
-## expriment_code/main.py
-for setting up environment variables and paths
-```bash
-chmod +x setup.sh
-. setup.sh
+![fig5](plot/fig5.png)
+
+```shell
+python plot-code/fig5.py
 ```
+
+### Figure 6
+
+![fig6](plot/fig6.png)
+
+```shell
+python plot-code/fig6.py
+```
+
+### Figure 7
+
+![fig7](plot/fig7_seed24.png)
+
+```shell
+python plot-code/fig7.py
+```
+
+## Citation
+
+If you use this code or our methodology in your research, please cite our paper:
+
+```bibtex
+@article{Akiba2025,
+  title={Multi-objective optimization for designing structurally similar proteins with dissimilar sequences},
+  author={Akiba, Ryunosuke and Moriwaki, Yoshitaka and Ishitani, Ryuichiro and Yoshikawa, Narutoshi},
+  journal={Science and Technology of Advanced Materials: Methods},
+  year={2025},
+  doi={10.1080/27660400.2025.2611575},
+  url={[https://doi.org/10.1080/27660400.2025.2611575](https://doi.org/10.1080/27660400.2025.2611575)}
+}
